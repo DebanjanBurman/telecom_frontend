@@ -1,0 +1,98 @@
+<div style="width: 70%;margin-left: 15%;">
+    <div style="border: 1px solid black;padding: 5px;">
+        <div style="display: inline-block;padding: 20px;">
+            <h3>Register New Customer</h3>
+            <label for="cust_name">Name:</label>
+            <input type="text" id="cust_name" name = "cust_name" [(ngModel)]="cust_name">
+            <br><br>
+            <label for="birthday">Date of Birth:</label>
+            <input type="date" id="birthday" name="birthday" [(ngModel)]="birthday">
+            <br><br>
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="cust_email">
+            <br><br>
+            <label for="email">Enter your AADHAR no.:</label>
+            <input
+            type="text"
+            id="email"
+            inputmode="numeric"
+            pattern="[0-9]"
+            maxlength="12"
+            placeholder="xxxxxxxxxxxx"
+            [(ngModel)]="aadhar"
+            />
+            <br><br>
+            <label for="regn_date">Registration Date:</label>
+            <input type="date" id="regn_date" name="regn_date" [(ngModel)]="regn_date">
+            <br><br>
+            <label for="phone">Enter your Phone no.:</label>
+            <input
+            type="text"
+            id="phone"
+            inputmode="numeric"
+            pattern="[0-9]"
+            maxlength="10"
+            placeholder="xxxxxxxxxx"
+            [(ngModel)]="phone"
+            />
+        </div>
+        <div style="display: inline-block;vertical-align: top;margin-left: 24%;padding: 20px;">
+            <h3>Choose New Plan</h3>
+            <label for="plan_name">Choose Plan Name:</label>
+            <select [(ngModel)]="plan_name" (click)="planChange()">
+                <option value = {{plan.name}} *ngFor = "let plan of plans" >{{plan.name}}</option>
+            </select>
+            <br><br>
+            <label for="plan_cost">Choose Plan Cost:</label>
+            <select [(ngModel)]="plan_cost">
+                <option value = {{plan_cost}} >{{plan_cost}}</option>
+            </select>
+            
+            <br><br>
+            <label for="plan_validity">Choose Validity:</label>
+            <select [(ngModel)]="plan_validity">
+                <option value = {{plan_validity}} >{{plan_validity}}</option>
+            </select>
+            <br><br>
+            <label for="plan_status">Choose Plan Status:</label>
+            <select name="plan_status" id="plan_status" [(ngModel)]="plan_status">
+            <option value="null">--Choose Status--</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+        <br><br>
+        <button type="button" style="margin-left: 45%;" (click)="submit()">Submit</button>
+    </div>
+    <br><br><br>
+    <div style="width: 90%;margin-left: 5%;border: 1px solid black;padding: 20px;">
+        <h3 style="justify-content: center;">Customer Details</h3>        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Aadhar</th>
+                <th>Registration Date</th>
+                <th>Mobile</th>
+                <th>Plan Name</th>
+                <th>Plan Cost</th>
+                <th>Plan Validity</th>
+                <th>Plan Status</th>
+            </tr>
+            <tr *ngFor = "let customer of customerTableData">
+                <td>{{customer.Name}}</td>
+                <td>{{customer.DOB}}</td>
+                <td>{{customer.Email}}</td>
+                <td>{{customer.Aadhar}}</td>
+                <td>{{customer.Registration_Date}}</td>
+                <td>{{customer.Mobile}}</td>
+                <td>{{customer.Plan_Name}}</td>
+                <td>{{customer.Plan_Cost}}</td>
+                <td>{{customer.Plan_Validity}}</td>
+                <td>{{customer.Plan_Status}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+

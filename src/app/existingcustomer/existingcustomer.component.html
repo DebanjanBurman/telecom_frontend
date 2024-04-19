@@ -1,0 +1,81 @@
+<h2 style="color: red; text-align: center;">Welcome {{logged_cust_name}}!</h2>
+
+<div style="width: 70%;margin-left: 15%;">
+    <div style="display: inline-block;border: 1px solid black;margin-left: 15%;padding: 20px;">
+        <h3>Renew Plan</h3>
+        <label for="renewal_date">Renewal Date:</label>
+        <input type="date" id="renewal_date" name="renewal_date" [(ngModel)]="renewal_date">
+        <br><br>
+        <label for="renewal_plan_status">Choose Plan Status:</label>
+        <select name="renewal_plan_status" id="renewal_plan_status" [(ngModel)]="renewal_plan_status">
+        <option value="null">--Choose Status--</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        </select>
+        <br><br>
+        <button type="button" (click)="submit_renew()" style="float:right">Submit</button>
+    </div>
+    <div style="display: inline-block;vertical-align: top;margin-left: 8%;border: 1px solid black;padding: 20px;">
+        <h3>Upgrade/Downgrade Plan</h3>
+        <label for="existing_plan_name">Existing Plan Name:</label>
+        <input type="text" id="existing_plan_name" name="existing_plan_name" value="{{logged_cust_plan_name}}" disabled>
+        <br><br>
+        <label for="new_plan_name">New Plan Name:</label>
+        <select [(ngModel)]="new_plan_name" (click)="planChange()">
+            <option value = {{plan.name}} *ngFor = "let plan of plans" [disabled]="plan.name==logged_cust_plan_name">{{plan.name}}</option>
+        </select>
+        <br><br>
+        <label for="new_plan_cost">Plan Cost:</label>
+        <select [(ngModel)]="new_plan_cost">
+            <option value = {{new_plan_cost}} >{{new_plan_cost}}</option>
+        </select>
+        
+        <br><br>
+        <label for="new_plan_validity">Validity:</label>
+        <select [(ngModel)]="new_plan_validity">
+            <option value = {{new_plan_validity}} >{{new_plan_validity}}</option>
+        </select>
+        <br><br>
+        <label for="new_plan_status">Choose Plan Status:</label>
+        <select name="new_plan_status" id="new_plan_status" [(ngModel)]="new_plan_status">
+        <option value="null">--Choose Status--</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        </select>
+        <br><br>
+        <button type="button" (click)="submit_upgradation()" style="float:right">Submit</button>
+    </div>
+    
+    
+    <br><br><br>
+    <div style="width: 90%;margin-left: 5%;border: 1px solid black;padding: 20px;">
+        <h3 style="justify-content: center;">Customer Details</h3>        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Aadhar</th>
+                <th>Registration Date</th>
+                <th>Mobile</th>
+                <th>Plan Name</th>
+                <th>Plan Cost</th>
+                <th>Plan Validity</th>
+                <th>Plan Status</th>
+            </tr>
+            <tr *ngFor = "let customer of customerTableData">
+                <td>{{customer.Name}}</td>
+                <td>{{customer.DOB}}</td>
+                <td>{{customer.Email}}</td>
+                <td>{{customer.Aadhar}}</td>
+                <td>{{customer.Registration_Date}}</td>
+                <td>{{customer.Mobile}}</td>
+                <td>{{customer.Plan_Name}}</td>
+                <td>{{customer.Plan_Cost}}</td>
+                <td>{{customer.Plan_Validity}}</td>
+                <td>{{customer.Plan_Status}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
